@@ -612,15 +612,16 @@ function selectMany(arr, childrenSelector) {
 function getElementByIndexes(arr, indexes) {
   // throw new Error('Not implemented');
   let tempArray = arr;
+  let answer = 0;
 
-  return indexes.map((itemId, itemIdId) => {
-    console.log(tempArray);
-    if (itemIdId < indexes.length - 1) {
-      [tempArray] = [...tempArray[itemId]];
+  indexes.forEach((itemId, itemIdId) => {
+    if (itemIdId === (indexes.length - 1)) { // последний
+      answer = tempArray[itemId];
+    } else {
+      tempArray = [...tempArray[itemId]];
     }
-    console.log({ arr, tempArray });
-    return tempArray;
   });
+  return answer;
 }
 
 /**
